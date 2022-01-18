@@ -111,7 +111,7 @@ class Solution {
             parent[i * n + j] = i * n + j;
             ++count;
           }
-          rank[i * n + j] = 0;
+          rank[i * n + j] = 0; %没必要
         }
       }
     }
@@ -130,7 +130,7 @@ class Solution {
         } else if (rank[rootx] < rank[rooty]) {
           parent[rootx] = rooty;
         } else {
-          parent[rooty] = rootx; rank[rootx] += 1;
+          parent[rooty] = rootx; rank[rootx] += 1; % rank只是记录，rootx 和rooty  不一致的时候就需要减去那个多余的1
         }
         --count;
       }
