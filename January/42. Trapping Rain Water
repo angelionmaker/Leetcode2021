@@ -47,3 +47,32 @@ class Solution {
         return res;
     }
 }
+
+# stack solution
+class Solution {
+    public int trap(int[] height) {
+        int res = 0;
+        int n = height.length;
+        
+        Deque<Integer> stack = new ArrayDeque<>();
+        
+        int curIndex = 0;
+        
+        while(curIndex < n){
+            while(!stack.isEmpty() && height[curIndex] > height[stack.peek()]){
+                int top = stack.pop();
+                if(stack.isEmpty()){
+                    break;
+                }
+                int h = Math.min(height[curIndex], height[stack.peek()]) - height[top];
+                int dist = curIndex - stack.peek() - 1;
+                res += h * dist;
+            }
+            
+            stack.push(curIndex);
+            curIndex++;
+        }
+        
+        return res;
+    }
+}
